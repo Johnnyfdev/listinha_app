@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:listinha_app/src/shared/widgets/default_app_bar_widget.dart';
+import 'package:realm/realm.dart';
 
 import '../../../../shared/definitions/const_values.dart';
+import '../../../../shared/services/storage/realm/models/task_model.dart';
+import '../../../../shared/widgets/default_app_bar_widget.dart';
 import '../../../../shared/widgets/user_circle_avatar_widget.dart';
+import '../widgets/card/task_card_widget.dart';
 import '../widgets/custom_drawer_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
+            Padding(
               padding: const EdgeInsets.all(ConstValues.paddingMedium),
               child: SegmentedButton<int>(
                 segments: const [
@@ -52,6 +55,35 @@ class _HomePageState extends State<HomePage> {
                 ],
                 selected: const {1},
                 onSelectionChanged: (values) {},
+              ),
+            ),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.fromLTRB(
+                  ConstValues.paddingNormal,
+                  ConstValues.paddingMedium,
+                  ConstValues.paddingNormal,
+                  ConstValues.paddingHuge,
+                ),
+                itemCount: 10,
+                itemBuilder: (_, index) {
+                  final board = TaskBoardModel(
+                    Uuid.v4(),
+                    'Nova Task $index',
+                    tasks: [
+                      TaskModel(Uuid.v4(), 'Tarefa 1', isCompleted: true),
+                      TaskModel(Uuid.v4(), 'Tarefa 2', isCompleted: false),
+                      TaskModel(Uuid.v4(), 'Tarefa 2', isCompleted: false),
+                      TaskModel(Uuid.v4(), 'Tarefa 2', isCompleted: false),
+                    ],
+                  );
+                  return TaskCardWidget(
+                    taskBoard: board,
+                  );
+                },
+                separatorBuilder: (_, index) {
+                  return const SizedBox(height: ConstValues.spacerMedium);
+                },
               ),
             ),
           ],
