@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../../../shared/definitions/const_values.dart';
@@ -21,6 +20,7 @@ enum TaskCardStatus {
 class TaskCardWidget extends StatelessWidget {
   final TaskBoardModel taskBoard;
   final double height;
+
   const TaskCardWidget({
     Key? key,
     required this.taskBoard,
