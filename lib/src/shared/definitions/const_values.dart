@@ -33,6 +33,7 @@ class ConstValues {
   static const double borderRadiusExtraSmall = 4;
   static const double borderRadiusSmall = 8;
   static const double borderRadiusMedium = 16;
+  static const double borderRadiusNormal = 24;
   static const double borderRadiusLarge = 32;
   static const double borderRadiusExtraLarge = 64;
   static const double borderRadiusHuge = 128;
@@ -51,6 +52,7 @@ class ConstValues {
   static const double spacerExtraSmall = 4;
   static const double spacerSmall = 8;
   static const double spacerMedium = 16;
+  static const double spacerNormal = 24;
   static const double spacerLarge = 32;
   static const double spacerExtraLarge = 64;
   static const double spacerHuge = 128;
